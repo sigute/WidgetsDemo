@@ -1,11 +1,14 @@
 package com.github.sigute.widgets
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 
 class WidgetPreferences(context: Context) {
     private val preferences: SharedPreferences = context.getSharedPreferences("widget_preferences", Context.MODE_PRIVATE)
 
+    //using commit as value is needed straight away
+    @SuppressLint("ApplySharedPref")
     fun setWidgetValues(widgetId: Int, name: String) {
         val editor = preferences.edit()
         editor.putString("" + widgetId, name)

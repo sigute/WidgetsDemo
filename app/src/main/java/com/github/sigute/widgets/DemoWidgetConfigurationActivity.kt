@@ -8,9 +8,6 @@ import android.content.Intent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import android.os.Build
-import android.content.ComponentName
-
 
 class DemoWidgetConfigurationActivity : AppCompatActivity() {
     private var widgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
