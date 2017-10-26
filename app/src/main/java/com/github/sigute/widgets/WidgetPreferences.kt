@@ -7,7 +7,7 @@ import android.content.SharedPreferences
 class WidgetPreferences(context: Context) {
     private val preferences: SharedPreferences = context.getSharedPreferences("widget_preferences", Context.MODE_PRIVATE)
 
-    //using commit as value is needed straight away
+    //using commit instead of apply as value is needed straight away
     @SuppressLint("ApplySharedPref")
     fun setWidgetValues(widgetId: Int, name: String) {
         val editor = preferences.edit()

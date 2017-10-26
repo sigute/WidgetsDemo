@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 save()
             } else {
-                Toast.makeText(this, "Widget  can only be pinned on Oreo and above!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_widget_pinning_not_available_sdk_version), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         val widgetNameString = widgetName.text.toString()
 
         if (widgetNameString.isEmpty()) {
-            Toast.makeText(this, "Widget name cannot be empty", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_widget_name_not_entered), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         val provider = ComponentName(this, DemoWidgetProvider::class.java)
 
         if (!appWidgetManager.isRequestPinAppWidgetSupported) {
-            Toast.makeText(this, "Widget pinning not supported for current launcher", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_widget_pinning_not_supported_by_launcher), Toast.LENGTH_SHORT).show()
             return
         }
 

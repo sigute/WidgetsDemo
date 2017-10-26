@@ -43,7 +43,7 @@ class DemoWidgetConfigurationActivity : AppCompatActivity() {
 
     private fun save() {
         if (widgetName.text.toString().isEmpty()) {
-            Toast.makeText(this, "Widget name cannot be empty", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_widget_name_not_entered), Toast.LENGTH_SHORT).show()
             return
         }
 
