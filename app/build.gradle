@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+
     defaultConfig {
         applicationId "com.github.sigute.widgets"
         minSdkVersion 19
