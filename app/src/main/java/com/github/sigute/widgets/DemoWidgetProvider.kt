@@ -8,15 +8,18 @@ import android.widget.RemoteViews
 
 class DemoWidgetProvider : AppWidgetProvider() {
     companion object {
+        fun getRemoteViews(context: Context, widgetName: String): RemoteViews {
+            val remoteViews = RemoteViews(context.packageName, R.layout.widget)
+            remoteViews.setTextViewText(R.id.name, widgetName)
+            return remoteViews
+        }
+
         fun updateWidgetUI(context: Context, appWidgetManager: AppWidgetManager, widgetPreferences: WidgetPreferences, widgetId: Int) {
             Log.d("DemoWidgetProvider", "Configuring widget id: " + widgetId)
             val widgetName = widgetPreferences.getWidgetName(widgetId)
             if (widgetName != null) {
                 Log.d("DemoWidgetProvider", "Widget name: " + widgetName)
-                //setting widget name
-                val remoteViews = RemoteViews(context.packageName, R.layout.widget)
-                remoteViews.setTextViewText(R.id.name, widgetName)
-                appWidgetManager.updateAppWidget(widgetId, remoteViews)
+                appWidgetManager.updateAppWidget(widgetId, getRemoteViews(context, widgetName))
             }
         }
     }

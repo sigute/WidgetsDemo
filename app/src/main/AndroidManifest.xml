@@ -31,5 +31,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidgetprovider" />
         </receiver>
+
+        <service android:name=".DemoWidgetPinnedService" />
     </application>
 </manifest>
