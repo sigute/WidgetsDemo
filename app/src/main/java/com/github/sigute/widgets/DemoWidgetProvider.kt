@@ -2,12 +2,21 @@ package com.github.sigute.widgets
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
-import android.util.Log
+import android.content.Intent
 import android.widget.RemoteViews
 
 class DemoWidgetProvider : AppWidgetProvider() {
     companion object {
+        fun updateWidgets(context: Context) {
+            val intent = Intent(context, DemoWidgetProvider::class.java)
+            intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            val widgetIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, DemoWidgetProvider::class.java))
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIDs)
+            context.sendBroadcast(intent)
+        }
+
         fun getRemoteViews(context: Context, widgetName: String): RemoteViews {
             val remoteViews = RemoteViews(context.packageName, R.layout.widget)
             remoteViews.setTextViewText(R.id.name, widgetName)
@@ -15,10 +24,8 @@ class DemoWidgetProvider : AppWidgetProvider() {
         }
 
         fun updateWidgetUI(context: Context, appWidgetManager: AppWidgetManager, widgetPreferences: WidgetPreferences, widgetId: Int) {
-            Log.d("DemoWidgetProvider", "Configuring widget id: " + widgetId)
             val widgetName = widgetPreferences.getWidgetName(widgetId)
             if (widgetName != null) {
-                Log.d("DemoWidgetProvider", "Widget name: " + widgetName)
                 appWidgetManager.updateAppWidget(widgetId, getRemoteViews(context, widgetName))
             }
         }

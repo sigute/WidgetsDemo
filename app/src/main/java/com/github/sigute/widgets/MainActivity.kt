@@ -1,12 +1,11 @@
 package com.github.sigute.widgets
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.os.Build
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -34,13 +33,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            sorry.visibility = View.VISIBLE
-            widgetName.visibility = View.GONE
-            saveButton.visibility = View.GONE
-        } else {
             sorry.visibility = View.GONE
             widgetName.visibility = View.VISIBLE
             saveButton.visibility = View.VISIBLE
+        } else {
+            sorry.visibility = View.VISIBLE
+            widgetName.visibility = View.GONE
+            saveButton.visibility = View.GONE
         }
     }
 
@@ -61,8 +60,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val pinnedWidgetCallbackIntent = DemoWidgetPinnedService.getIntent(this, widgetNameString)
-        val successCallback = PendingIntent.getService(this, 0, pinnedWidgetCallbackIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+        val successCallback = DemoWidgetPinnedReceiver.getPendingIntent(this, widgetNameString)
 
         val remoteViews = DemoWidgetProvider.getRemoteViews(this, widgetNameString)
         val bundle = Bundle()
