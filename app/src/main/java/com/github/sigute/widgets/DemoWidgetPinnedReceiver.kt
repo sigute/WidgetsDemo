@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Bundle
 
 class DemoWidgetPinnedReceiver : BroadcastReceiver() {
+
     companion object {
         const val WIDGET_NAME = "WIDGET_NAME"
         const val BROADCAST_ID = 123456

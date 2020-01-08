@@ -8,6 +8,7 @@ import android.content.Intent
 import android.widget.RemoteViews
 
 class DemoWidgetProvider : AppWidgetProvider() {
+
     companion object {
         fun updateWidgets(context: Context) {
             val intent = Intent(context, DemoWidgetProvider::class.java)

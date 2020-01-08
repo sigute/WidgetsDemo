@@ -4,12 +4,13 @@ import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class DemoWidgetConfigurationActivity : AppCompatActivity() {
+
     private var widgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
 
     private lateinit var widgetName: EditText

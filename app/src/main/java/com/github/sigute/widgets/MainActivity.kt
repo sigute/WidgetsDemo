@@ -4,15 +4,16 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var sorry: TextView
     private lateinit var widgetName: EditText
     private lateinit var saveButton: Button
